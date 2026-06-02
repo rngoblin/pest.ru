@@ -6,13 +6,16 @@
   --color-line: #dfe4dc;
   --color-green: #2f8f2f;
   --color-green-dark: #1f6521;
+  --color-amber: #f2a100;
   --color-yantari: #f2a100;
   --color-yantari-soft: #fff4d8;
+  --color-soft-green: #edf5eb;
   --color-graphite: #27302a;
   --color-bluegray: #e8eef0;
   --shadow-soft: 0 18px 50px rgba(31, 37, 32, 0.08);
   --radius: 8px;
   --container: min(100% - 40px, 1240px);
+  --grid-gap: 18px;
 }
 
 * {
@@ -349,6 +352,7 @@ p {
 .brand-feature > *,
 .two-column > *,
 .contact-layout > *,
+.request-layout > *,
 .grid > *,
 .product-grid > *,
 .service-list > *,
@@ -368,6 +372,15 @@ p {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 34px;
+}
+
+.trust-line {
+  margin: 24px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-muted);
+  font-size: 14px;
+  font-weight: 680;
 }
 
 .hero-media {
@@ -570,8 +583,11 @@ p {
 .culture-card {
   position: relative;
   display: flex;
-  min-height: 128px;
-  align-items: flex-end;
+  min-height: 174px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 8px;
   padding: 18px;
   overflow: hidden;
   color: var(--color-text);
@@ -588,8 +604,27 @@ p {
   content: "";
 }
 
+.culture-card h3,
+.culture-card p,
 .culture-card span {
   position: relative;
+}
+
+.culture-card h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.culture-card p {
+  margin: 0;
+  color: #536052;
+  font-size: 13px;
+  font-weight: 560;
+}
+
+.culture-card span {
+  color: var(--color-green-dark);
+  font-size: 13px;
 }
 
 .cta-block {
@@ -669,6 +704,28 @@ p {
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 28px;
+}
+
+.filter-panel {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 28px;
+  padding: 18px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.filter-panel .filter-bar {
+  margin-bottom: 0;
+}
+
+.filter-label {
+  margin-bottom: 8px;
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 780;
+  text-transform: uppercase;
 }
 
 .filter-button {
@@ -870,6 +927,16 @@ p {
   padding: 24px;
 }
 
+.scheme-card .button {
+  align-self: flex-start;
+}
+
+.scheme-meta {
+  margin: -4px 0 18px;
+  color: var(--color-green-dark);
+  font-weight: 680;
+}
+
 .scheme-card-head {
   display: flex;
   align-items: center;
@@ -886,8 +953,9 @@ p {
 
 .stage-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
+  margin-bottom: 18px;
 }
 
 .stage-grid section {
@@ -1027,6 +1095,17 @@ p {
   background: var(--color-surface);
 }
 
+.request-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1.3fr);
+  gap: 36px;
+  align-items: start;
+}
+
+.request-form {
+  border-color: #efd99e;
+}
+
 .form-row {
   display: grid;
   gap: 8px;
@@ -1041,6 +1120,45 @@ p {
   color: var(--color-text);
   font-size: 14px;
   font-weight: 720;
+}
+
+.task-fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.task-fieldset legend {
+  margin-bottom: 10px;
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 720;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.checkbox-grid label {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background: #fbfcfa;
+  color: #475047;
+  font-size: 14px;
+  font-weight: 620;
+}
+
+.checkbox-grid input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-green);
 }
 
 .form-row input,
@@ -1268,7 +1386,8 @@ p {
   .subbrand-hero-grid,
   .brand-feature,
   .two-column,
-  .contact-layout {
+  .contact-layout,
+  .request-layout {
     grid-template-columns: 1fr;
   }
 
@@ -1289,6 +1408,10 @@ p {
 
   .grid--4,
   .stage-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .checkbox-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1368,6 +1491,8 @@ p {
   .brand-architecture,
   .mini-products,
   .contact-form,
+  .request-layout,
+  .checkbox-grid,
   .cta-block {
     grid-template-columns: 1fr;
   }
@@ -1401,7 +1526,7 @@ p {
   }
 
   .culture-card {
-    min-height: 96px;
+    min-height: 138px;
   }
 }
 

@@ -60,6 +60,35 @@
     });
   });
 
+  document.querySelectorAll("[data-filter-scope]").forEach((scope) => {
+    const groups = Array.from(scope.querySelectorAll("[data-filter-key]"));
+    const items = Array.from(scope.querySelectorAll("[data-filter-item]"));
+    const active = {};
+
+    groups.forEach((group) => {
+      const key = group.dataset.filterKey;
+      const buttons = Array.from(group.querySelectorAll("[data-filter-value]"));
+      if (!key) return;
+      active[key] = "all";
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          active[key] = button.dataset.filterValue || "all";
+          buttons.forEach((item) => item.classList.toggle("is-active", item === button));
+
+          items.forEach((item) => {
+            const isVisible = Object.entries(active).every(([filterKey, value]) => {
+              if (value === "all") return true;
+              const values = (item.dataset[filterKey] || "").split(/\s+/);
+              return values.includes(value);
+            });
+            item.classList.toggle("is-hidden", !isVisible);
+          });
+        });
+      });
+    });
+  });
+
   document.querySelectorAll("[data-filter-group]").forEach((group) => {
     const buttons = Array.from(group.querySelectorAll("[data-filter]"));
     const scope = group.closest(".section") || document;
@@ -95,8 +124,9 @@
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
+      // TODO: подключить обработчик формы, CRM, Telegram или email-маршрутизацию.
       if (status) {
-        status.textContent = "Заявка подготовлена. Подключите обработчик формы.";
+        status.textContent = "Заявка подготовлена. Подключите обработчик формы / CRM / Telegram / email.";
       }
       form.reset();
     });

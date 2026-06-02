@@ -17,7 +17,6 @@
           <a href="yantari.html">Янтари</a>
           <a href="schemes.html">Схемы</a>
           <a href="services.html">Услуги</a>
-          <a href="agrocenter.html">Агроцентр</a>
           <a href="company.html">О компании</a>
           <a href="contacts.html">Контакты</a>
         </nav>
@@ -40,86 +39,79 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" data-filter-scope>
         <div class="container">
-          <div class="filter-bar reveal" data-filter-group>
-            <button class="filter-button is-active" type="button" data-filter="all">Все культуры</button>
-            <button class="filter-button" type="button" data-filter="wheat">Пшеница</button>
-            <button class="filter-button" type="button" data-filter="sunflower">Подсолнечник</button>
-            <button class="filter-button" type="button" data-filter="corn">Кукуруза</button>
-            <button class="filter-button" type="button" data-filter="soy">Соя</button>
-            <button class="filter-button" type="button" data-filter="rape">Рапс</button>
-            <button class="filter-button" type="button" data-filter="beet">Сахарная свекла</button>
+          <div class="filter-panel reveal">
+            <div>
+              <p class="filter-label">Культура</p>
+              <div class="filter-bar" data-filter-key="crop">
+                <button class="filter-button is-active" type="button" data-filter-value="all">Все культуры</button>
+                <button class="filter-button" type="button" data-filter-value="wheat">Пшеница</button>
+                <button class="filter-button" type="button" data-filter-value="sunflower">Подсолнечник</button>
+                <button class="filter-button" type="button" data-filter-value="corn">Кукуруза</button>
+                <button class="filter-button" type="button" data-filter-value="soy">Соя</button>
+                <button class="filter-button" type="button" data-filter-value="rape">Рапс</button>
+                <button class="filter-button" type="button" data-filter-value="beet">Сахарная свекла</button>
+              </div>
+            </div>
+            <div>
+              <p class="filter-label">Задача</p>
+              <div class="filter-bar" data-filter-key="task">
+                <button class="filter-button is-active" type="button" data-filter-value="all">Все задачи</button>
+                <button class="filter-button" type="button" data-filter-value="weeds">сорняки</button>
+                <button class="filter-button" type="button" data-filter-value="disease">болезни</button>
+                <button class="filter-button" type="button" data-filter-value="pests">вредители</button>
+                <button class="filter-button" type="button" data-filter-value="seed">протравка</button>
+                <button class="filter-button" type="button" data-filter-value="nutrition">питание</button>
+                <button class="filter-button" type="button" data-filter-value="stress">стресс</button>
+              </div>
+            </div>
           </div>
+
           <div class="scheme-list">
-            <article class="scheme-card reveal" id="wheat" data-category="wheat">
-              <div class="scheme-card-head"><span class="tag">Зерновые</span><h2>Пшеница</h2></div>
-              <div class="stage-grid">
-                <section><h3>Семена / протравка</h3><p>Позиция под протравитель и Янтари Семена.</p></section>
-                <section><h3>Ранняя вегетация</h3><p>Оценка состояния растений и стартового питания.</p></section>
-                <section><h3>Гербицидная защита</h3><p>Подбор решения по сорной растительности.</p></section>
-                <section><h3>Фунгицидная защита</h3><p>Профилактика заболеваний по фазам риска.</p></section>
-                <section><h3>Инсектицидная защита</h3><p>Контроль вредителей после мониторинга.</p></section>
-                <section><h3>Микроудобрения / антистресс</h3><p>Листовое питание по результатам диагностики.</p></section>
-              </div>
+            <!-- TODO: заменить этапы, продукты и регламенты на точные схемы после проверки агрономом -->
+            <article class="scheme-card reveal" id="wheat" data-filter-item data-crop="wheat" data-task="weeds disease nutrition seed">
+              <div class="scheme-card-head"><span class="tag">Пшеница</span><h2>Пшеница · защита и питание</h2></div>
+              <p class="scheme-meta">Задачи: сорняки, болезни, листовое питание, протравка</p>
+              <div class="stage-grid"><section><h3>Этапы</h3><p>протравка → гербицидная защита → фунгицидная защита → Янтари по вегетации</p></section><section><h3>Комментарий</h3><p>Точная схема уточняется по региону, фазе и фитосанитарной ситуации.</p></section></div>
+              <a class="button button--secondary button--small" href="contacts.html">Получить схему</a>
             </article>
-            <article class="scheme-card reveal" id="sunflower" data-category="sunflower">
-              <div class="scheme-card-head"><span class="tag">Масличные</span><h2>Подсолнечник</h2></div>
-              <div class="stage-grid">
-                <section><h3>Семена / протравка</h3><p>Защита семян и стартовое питание по задаче.</p></section>
-                <section><h3>Ранняя вегетация</h3><p>Контроль густоты, стресса и дефицитов.</p></section>
-                <section><h3>Гербицидная защита</h3><p>Схема зависит от технологии выращивания.</p></section>
-                <section><h3>Фунгицидная защита</h3><p>Периоды риска уточняются по региону.</p></section>
-                <section><h3>Инсектицидная защита</h3><p>Решение после мониторинга вредителей.</p></section>
-                <section><h3>Микроудобрения / антистресс</h3><p>Возможная роль борного и калийного питания.</p></section>
-              </div>
+            <article class="scheme-card reveal" id="sunflower" data-filter-item data-crop="sunflower" data-task="weeds disease pests nutrition stress">
+              <div class="scheme-card-head"><span class="tag">Подсолнечник</span><h2>Подсолнечник · защита и питание</h2></div>
+              <p class="scheme-meta">Задачи: сорняки, болезни, вредители, борное питание, стресс</p>
+              <div class="stage-grid"><section><h3>Этапы</h3><p>стартовая защита → гербицидная программа → фунгицид/инсектицид по риску → Янтари Бор или Калий</p></section><section><h3>Комментарий</h3><p>Технология выращивания и гибрид влияют на подбор решений.</p></section></div>
+              <a class="button button--secondary button--small" href="contacts.html">Получить схему</a>
             </article>
-            <article class="scheme-card reveal" id="corn" data-category="corn">
-              <div class="scheme-card-head"><span class="tag">Зерновые</span><h2>Кукуруза</h2></div>
-              <div class="stage-grid">
-                <section><h3>Семена / протравка</h3><p>Подготовка семян и стартовая защита.</p></section>
-                <section><h3>Ранняя вегетация</h3><p>Оценка фосфорного и цинкового питания.</p></section>
-                <section><h3>Гербицидная защита</h3><p>Почвенная или страховая схема по сорнякам.</p></section>
-                <section><h3>Фунгицидная защита</h3><p>Позиция под региональную схему.</p></section>
-                <section><h3>Инсектицидная защита</h3><p>Мониторинг вредителей и порогов вредоносности.</p></section>
-                <section><h3>Микроудобрения / антистресс</h3><p>Янтари Супер Цинк и другие продукты по диагностике.</p></section>
-              </div>
+            <article class="scheme-card reveal" id="corn" data-filter-item data-crop="corn" data-task="weeds pests nutrition stress seed">
+              <div class="scheme-card-head"><span class="tag">Кукуруза</span><h2>Кукуруза · защита и питание</h2></div>
+              <p class="scheme-meta">Задачи: сорняки, вредители, цинковое питание, стартовое развитие</p>
+              <div class="stage-grid"><section><h3>Этапы</h3><p>предпосевная подготовка → почвенная или страховая защита → мониторинг вредителей → Янтари Цинк/Фосфор</p></section><section><h3>Комментарий</h3><p>Питание уточняется по фазе, гибриду и состоянию растений.</p></section></div>
+              <a class="button button--secondary button--small" href="contacts.html">Получить схему</a>
             </article>
-            <article class="scheme-card reveal" id="soy" data-category="soy">
-              <div class="scheme-card-head"><span class="tag">Бобовые</span><h2>Соя</h2></div>
-              <div class="stage-grid">
-                <section><h3>Семена / протравка</h3><p>Предпосевная обработка с учетом инокуляции.</p></section>
-                <section><h3>Ранняя вегетация</h3><p>Контроль развития и стартовых стрессов.</p></section>
-                <section><h3>Гербицидная защита</h3><p>Схема зависит от спектра сорняков.</p></section>
-                <section><h3>Фунгицидная защита</h3><p>Оценка потребности по погоде и фитосостоянию.</p></section>
-                <section><h3>Инсектицидная защита</h3><p>Мониторинг вредителей в период вегетации.</p></section>
-                <section><h3>Микроудобрения / антистресс</h3><p>Молибден и комплексные продукты по необходимости.</p></section>
-              </div>
+            <article class="scheme-card reveal" id="soy" data-filter-item data-crop="soy" data-task="weeds disease nutrition seed stress">
+              <div class="scheme-card-head"><span class="tag">Соя</span><h2>Соя · защита и питание</h2></div>
+              <p class="scheme-meta">Задачи: протравка, сорняки, болезни, молибден, стресс</p>
+              <div class="stage-grid"><section><h3>Этапы</h3><p>обработка семян → гербицидная защита → фунгицид по риску → Янтари Молибден по рекомендации</p></section><section><h3>Комментарий</h3><p>Нужно учитывать инокуляцию и совместимость операций.</p></section></div>
+              <a class="button button--secondary button--small" href="contacts.html">Получить схему</a>
             </article>
-            <article class="scheme-card reveal" id="rape" data-category="rape">
-              <div class="scheme-card-head"><span class="tag">Масличные</span><h2>Рапс</h2></div>
-              <div class="stage-grid">
-                <section><h3>Семена / протравка</h3><p>Защита семенного материала перед посевом.</p></section>
-                <section><h3>Ранняя вегетация</h3><p>Контроль питания и стрессовых факторов.</p></section>
-                <section><h3>Гербицидная защита</h3><p>Программа под засоренность поля.</p></section>
-                <section><h3>Фунгицидная защита</h3><p>Схема по фазам и рискам заболеваний.</p></section>
-                <section><h3>Инсектицидная защита</h3><p>Особое внимание мониторингу вредителей.</p></section>
-                <section><h3>Микроудобрения / антистресс</h3><p>Борное питание и антистрессовые решения по задаче.</p></section>
-              </div>
+            <article class="scheme-card reveal" id="rape" data-filter-item data-crop="rape" data-task="weeds disease pests nutrition stress seed">
+              <div class="scheme-card-head"><span class="tag">Рапс</span><h2>Рапс · защита и питание</h2></div>
+              <p class="scheme-meta">Задачи: сорняки, болезни, вредители, борное питание, стресс</p>
+              <div class="stage-grid"><section><h3>Этапы</h3><p>семена → гербицидная защита → инсектицидный мониторинг → фунгицидная защита → Янтари Бор</p></section><section><h3>Комментарий</h3><p>Периоды обработки зависят от фазы и давления вредителей.</p></section></div>
+              <a class="button button--secondary button--small" href="contacts.html">Получить схему</a>
             </article>
-            <article class="scheme-card reveal" id="beet" data-category="beet">
-              <div class="scheme-card-head"><span class="tag">Технические</span><h2>Сахарная свекла</h2></div>
-              <div class="stage-grid">
-                <section><h3>Семена / протравка</h3><p>Позиция под предпосевную подготовку.</p></section>
-                <section><h3>Ранняя вегетация</h3><p>Оценка густоты и начального роста.</p></section>
-                <section><h3>Гербицидная защита</h3><p>Последовательная схема по волнам сорняков.</p></section>
-                <section><h3>Фунгицидная защита</h3><p>Профилактика листовых заболеваний по рискам.</p></section>
-                <section><h3>Инсектицидная защита</h3><p>Контроль вредителей после обследования.</p></section>
-                <section><h3>Микроудобрения / антистресс</h3><p>Бор и калийные продукты по фазам развития.</p></section>
-              </div>
+            <article class="scheme-card reveal" id="beet" data-filter-item data-crop="beet" data-task="weeds disease nutrition stress">
+              <div class="scheme-card-head"><span class="tag">Сахарная свекла</span><h2>Сахарная свекла · защита и питание</h2></div>
+              <p class="scheme-meta">Задачи: сорняки, болезни, бор, калий, стресс после обработки</p>
+              <div class="stage-grid"><section><h3>Этапы</h3><p>последовательная гербицидная защита → фунгицид по риску → Янтари Бор/Калий по фазам</p></section><section><h3>Комментарий</h3><p>Схема требует аккуратной привязки к волнам сорняков и состоянию культуры.</p></section></div>
+              <a class="button button--secondary button--small" href="contacts.html">Получить схему</a>
             </article>
           </div>
         </div>
+      </section>
+
+      <section class="section">
+        <div class="container"><div class="cta-block reveal"><div><p class="eyebrow">Консультация</p><h2>Нужна точная схема под поле?</h2><p>Передайте культуру, регион, фазу, историю поля и задачу. Мы подготовим схему для обсуждения с агрономом.</p></div><a class="button" href="contacts.html">Оставить заявку</a></div></div>
       </section>
     </main>
 
@@ -127,7 +119,7 @@
       <div class="container footer-grid">
         <div><a class="brand brand--footer" href="index.html"><img class="brand-logo" src="assets/img/logo-pesticides.png" alt="Pesticides RU"></a><img class="footer-yantari-logo" src="assets/img/logo-yantari-wordmark.png" alt="Янтари"><p>Pesticides RU - зонтичный бренд комплексных решений для защиты и питания культур. «Янтари» - собственная линейка микроудобрений внутри группы компаний.</p></div>
         <div><h2>Разделы</h2><a href="products.html">Продукция</a><a href="yantari.html">Янтари</a><a href="schemes.html">Схемы</a><a href="services.html">Услуги</a></div>
-        <div><h2>Компания</h2><a href="agrocenter.html">Агроцентр</a><a href="company.html">О компании</a><a href="contacts.html">Контакты</a></div>
+        <div><h2>Компания</h2><a href="company.html">О компании</a><a href="contacts.html">Контакты</a></div>
         <div><h2>Контакты</h2><a href="tel:+78000000000">8 800 000-00-00</a><a href="mailto:info@pesticides-ru.example">info@pesticides-ru.example</a><p>Адрес и реквизиты будут добавлены после согласования.</p></div>
       </div>
     </footer>
