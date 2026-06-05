@@ -205,6 +205,10 @@ textarea:focus-visible {
   font-size: 13px;
 }
 
+.cta-label-short {
+  display: none;
+}
+
 .app-main {
   min-height: 0;
   display: grid;
@@ -286,6 +290,23 @@ textarea:focus-visible {
 .rail-menu span {
   color: var(--muted);
   font-size: 11px;
+}
+
+.rail-menu .rail-menu__cta {
+  border-color: var(--green);
+  background: var(--green);
+  color: #fff;
+}
+
+.rail-menu .rail-menu__cta span {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.rail-menu .rail-menu__cta:hover,
+.rail-menu .rail-menu__cta.is-active {
+  border-color: var(--green-dark);
+  background: var(--green-dark);
+  color: #fff;
 }
 
 .rail-toggle {
@@ -851,6 +872,14 @@ fieldset.field {
   .button--compact {
     min-height: 36px;
     padding: 0 12px;
+  }
+
+  .cta-label-full {
+    display: none;
+  }
+
+  .cta-label-short {
+    display: inline;
   }
 
   .app-main {
