@@ -222,11 +222,9 @@
 
   const sectionMap = new Map(sections.map((section, index) => [section.id, { section, index }]));
   const contentPanel = document.querySelector("[data-content-panel]");
-  const contextPanel = document.querySelector("[data-context-panel]");
   const railIndex = document.querySelector("[data-rail-index]");
   const railTitle = document.querySelector("[data-rail-title]");
   const railText = document.querySelector("[data-rail-text]");
-  const statusSection = document.querySelector("[data-status-section]");
 
   function renderHome() {
     return `
@@ -373,50 +371,78 @@
 
   function renderContacts() {
     return `
-      <div class="section-shell">
+      <div class="section-shell section-shell--contacts">
         <div class="section-header">
           <span class="meta-label">Заявка</span>
           <h1>Получить рекомендацию или коммерческое предложение</h1>
           <p>Опишите культуру, регион и задачу. В статическом MVP форма показывает статус без реальной отправки.</p>
         </div>
-        <div class="form-card">
-          <form class="request-form" data-request-form>
-            <div class="field">
-              <label for="name">Имя</label>
-              <input id="name" name="name" type="text" autocomplete="name" required>
-            </div>
-            <div class="field">
-              <label for="phone">Телефон</label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" required>
-            </div>
-            <div class="field">
-              <label for="region">Регион</label>
-              <input id="region" name="region" type="text">
-            </div>
-            <div class="field">
-              <label for="culture">Культура</label>
-              <input id="culture" name="culture" type="text">
-            </div>
-            <fieldset class="field field--full">
-              <legend>Задача</legend>
-              <div class="contact-tags">
-                <label><input type="checkbox" name="task" value="Сорняки"> Сорняки</label>
-                <label><input type="checkbox" name="task" value="Болезни"> Болезни</label>
-                <label><input type="checkbox" name="task" value="Вредители"> Вредители</label>
-                <label><input type="checkbox" name="task" value="Питание"> Питание</label>
-                <label><input type="checkbox" name="task" value="Стресс"> Стресс после обработки</label>
-                <label><input type="checkbox" name="task" value="Схема"> Нужна схема</label>
+        <div class="contacts-layout">
+          <div class="form-card">
+            <form class="request-form" data-request-form>
+              <div class="field">
+                <label for="name">Имя</label>
+                <input id="name" name="name" type="text" autocomplete="name" required>
               </div>
-            </fieldset>
-            <div class="field field--full">
-              <label for="comment">Задача / комментарий</label>
-              <textarea id="comment" name="comment"></textarea>
-            </div>
-            <div class="form-footer">
-              <button class="button" type="submit">Отправить заявку</button>
-              <span class="form-status" data-form-status aria-live="polite"></span>
-            </div>
-          </form>
+              <div class="field">
+                <label for="phone">Телефон</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+              </div>
+              <div class="field">
+                <label for="region">Регион</label>
+                <input id="region" name="region" type="text">
+              </div>
+              <div class="field">
+                <label for="culture">Культура</label>
+                <input id="culture" name="culture" type="text">
+              </div>
+              <fieldset class="field field--full">
+                <legend>Задача</legend>
+                <div class="contact-tags">
+                  <label><input type="checkbox" name="task" value="Сорняки"><span>Сорняки</span></label>
+                  <label><input type="checkbox" name="task" value="Болезни"><span>Болезни</span></label>
+                  <label><input type="checkbox" name="task" value="Вредители"><span>Вредители</span></label>
+                  <label><input type="checkbox" name="task" value="Питание"><span>Питание</span></label>
+                  <label><input type="checkbox" name="task" value="Стресс"><span>Стресс после обработки</span></label>
+                  <label><input type="checkbox" name="task" value="Схема"><span>Нужна схема</span></label>
+                </div>
+              </fieldset>
+              <div class="field field--full field--comment">
+                <label for="comment">Задача / комментарий</label>
+                <textarea id="comment" name="comment"></textarea>
+              </div>
+              <div class="form-footer">
+                <button class="button" type="submit">Отправить заявку</button>
+                <span class="form-status" data-form-status aria-live="polite"></span>
+              </div>
+            </form>
+          </div>
+          <div class="contact-directory" aria-label="Контактные данные">
+            <article>
+              <span>Email</span>
+              <strong>[уточнить]</strong>
+            </article>
+            <article>
+              <span>Телефон №1</span>
+              <strong>+7(347)293-47-11</strong>
+            </article>
+            <article>
+              <span>Телефон №2</span>
+              <strong>[уточнить]</strong>
+            </article>
+            <article>
+              <span>MAX</span>
+              <strong>[ссылка уточняется]</strong>
+            </article>
+            <article>
+              <span>Telegram</span>
+              <strong>[ссылка уточняется]</strong>
+            </article>
+            <article>
+              <span>Instagram</span>
+              <strong>[ссылка уточняется]</strong>
+            </article>
+          </div>
         </div>
       </div>
     `;
@@ -451,48 +477,6 @@
     `;
   }
 
-  function renderContext(section) {
-    return `
-      <div class="context-stack">
-        <figure class="visual-card">
-          <img src="${section.visual}" alt="${section.visualAlt}">
-        </figure>
-        <article class="context-card">
-          <span class="context-label">${section.label}</span>
-          <h2>${section.factsTitle}</h2>
-          <ul class="fact-list">
-            ${section.facts.map(([title, text]) => `
-              <li>
-                <strong>${title}</strong>
-                <span>${text}</span>
-              </li>
-            `).join("")}
-          </ul>
-        </article>
-        ${section.diagram ? renderBrandDiagram() : ""}
-      </div>
-    `;
-  }
-
-  function renderBrandDiagram() {
-    return `
-      <article class="brand-diagram">
-        <span class="context-label">Связка брендов</span>
-        <h2>Pesticides RU → Янтари</h2>
-        <div class="brand-diagram__flow">
-          <div class="brand-node brand-node--main">
-            <strong>Pesticides RU</strong>
-            <span>защита · питание · сервис</span>
-          </div>
-          <div class="brand-node brand-node--amber">
-            <strong>Янтари</strong>
-            <span>жидкие микроудобрения</span>
-          </div>
-        </div>
-      </article>
-    `;
-  }
-
   function renderSection(sectionId, options = {}) {
     const match = sectionMap.get(sectionId) || sectionMap.get("home");
     const { section, index } = match;
@@ -500,11 +484,10 @@
     state.activeIndex = index;
 
     contentPanel.innerHTML = section.render();
-    contextPanel.innerHTML = renderContext(section);
+    contentPanel.scrollTop = 0;
     railIndex.textContent = `${String(index + 1).padStart(2, "0")} / ${String(sections.length).padStart(2, "0")}`;
     railTitle.textContent = section.railTitle;
     railText.textContent = section.railText;
-    statusSection.textContent = section.status;
 
     document.querySelectorAll("[data-section-link]").forEach((button) => {
       button.classList.toggle("is-active", button.dataset.section === section.id);

@@ -1,17 +1,21 @@
 :root {
-  --bg: #f4f3ee;
-  --paper: #fbfaf6;
-  --paper-2: #f0efe6;
-  --ink: #161816;
-  --muted: #6f746b;
-  --line: #d7d5c8;
-  --line-strong: #bcb8a8;
-  --green: #1f5f3a;
-  --green-dark: #123820;
-  --amber: #d89122;
-  --amber-soft: #f0d59a;
+  --fresh-green: #6b926e;
+  --dark-green: #21482d;
+  --off-white: #f7f7f7;
+  --graphite: #333333;
+  --bg: var(--off-white);
+  --paper: var(--off-white);
+  --paper-2: #eef2ee;
+  --ink: var(--graphite);
+  --muted: #617065;
+  --line: rgba(33, 72, 45, 0.22);
+  --line-strong: rgba(33, 72, 45, 0.42);
+  --green: var(--fresh-green);
+  --green-dark: var(--dark-green);
+  --amber: var(--fresh-green);
+  --amber-soft: rgba(107, 146, 110, 0.18);
   --danger-red: #b23b2e;
-  --focus: #244f89;
+  --focus: var(--fresh-green);
   --radius: 8px;
 }
 
@@ -29,11 +33,7 @@ body {
   display: grid;
   place-items: center;
   overflow: hidden;
-  background:
-    linear-gradient(rgba(22, 24, 22, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(22, 24, 22, 0.035) 1px, transparent 1px),
-    var(--bg);
-  background-size: 24px 24px;
+  background: var(--bg);
   color: var(--ink);
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-size: 15px;
@@ -80,22 +80,19 @@ textarea:focus-visible {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
   border: 1px solid var(--green-dark);
-  background:
-    linear-gradient(rgba(18, 56, 32, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(18, 56, 32, 0.045) 1px, transparent 1px),
-    var(--paper);
-  background-size: 40px 40px;
+  background: var(--paper);
 }
 
 .top-bar {
   min-height: 76px;
   display: grid;
-  grid-template-columns: minmax(220px, auto) minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, auto) auto;
   align-items: center;
+  justify-content: space-between;
   gap: 18px;
   padding: 12px 18px;
   border-bottom: 1px solid var(--line);
-  background: rgba(251, 250, 246, 0.92);
+  background: var(--paper);
 }
 
 .brand {
@@ -115,37 +112,14 @@ textarea:focus-visible {
   height: auto;
 }
 
-.brand-caption {
-  display: grid;
-  gap: 2px;
-  min-width: 0;
+.brand-sublogo {
+  height: 24px;
+  width: auto;
   padding-left: 12px;
   border-left: 1px solid var(--line);
+  transform: translateY(1px);
 }
 
-.brand-caption strong {
-  color: var(--green-dark);
-  font-size: 12px;
-  line-height: 1.1;
-  text-transform: uppercase;
-  letter-spacing: 0;
-}
-
-.brand-caption span {
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.1;
-}
-
-.top-nav {
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-}
-
-.top-nav__item,
 .rail-menu button,
 .filter-button,
 .crop-button,
@@ -157,17 +131,6 @@ textarea:focus-visible {
   transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
-.top-nav__item {
-  min-height: 38px;
-  padding: 0 12px;
-  color: #343934;
-  font-size: 13px;
-  font-weight: 680;
-  white-space: nowrap;
-}
-
-.top-nav__item:hover,
-.top-nav__item.is-active,
 .rail-menu button:hover,
 .rail-menu button.is-active,
 .filter-button:hover,
@@ -187,9 +150,11 @@ textarea:focus-visible {
   white-space: nowrap;
 }
 
-.contact-placeholder {
-  color: var(--muted);
+.contact-phone {
+  color: var(--green-dark);
   font-size: 12px;
+  font-weight: 760;
+  text-decoration: none;
 }
 
 .button {
@@ -218,20 +183,20 @@ textarea:focus-visible {
 }
 
 .button--secondary:hover {
-  background: #e9efe7;
+  background: rgba(107, 146, 110, 0.12);
   color: var(--green-dark);
 }
 
 .button--amber {
   border-color: var(--amber);
   background: var(--amber);
-  color: #1c160b;
+  color: #fff;
 }
 
 .button--amber:hover {
-  border-color: #aa6d15;
-  background: #c37a18;
-  color: #1c160b;
+  border-color: var(--green-dark);
+  background: var(--green-dark);
+  color: #fff;
 }
 
 .button--compact {
@@ -243,7 +208,7 @@ textarea:focus-visible {
 .app-main {
   min-height: 0;
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr) 360px;
+  grid-template-columns: 220px minmax(0, 1fr);
 }
 
 .panel,
@@ -256,7 +221,7 @@ textarea:focus-visible {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   border-right: 1px solid var(--line);
-  background: rgba(240, 239, 230, 0.68);
+  background: rgba(107, 146, 110, 0.08);
 }
 
 .rail-meta {
@@ -290,7 +255,6 @@ textarea:focus-visible {
   line-height: 1.15;
 }
 
-.rail-meta p,
 .rail-meta p {
   margin: 10px 0 0;
   font-size: 13px;
@@ -326,20 +290,19 @@ textarea:focus-visible {
 .content-panel {
   overflow: auto;
   padding: 20px;
-  border-right: 1px solid var(--line);
-}
-
-.context-panel {
-  overflow: auto;
-  padding: 18px;
-  background: rgba(251, 250, 246, 0.72);
 }
 
 .section-shell {
   min-height: 100%;
+  width: min(100%, 1040px);
   display: grid;
   align-content: center;
   gap: 18px;
+  margin: 0 auto;
+}
+
+.section-shell--contacts {
+  gap: 12px;
 }
 
 .section-header {
@@ -373,6 +336,8 @@ textarea:focus-visible {
 .yantari-grid,
 .service-grid,
 .company-grid,
+.contacts-layout,
+.contact-directory,
 .contact-tags {
   display: grid;
   gap: 10px;
@@ -395,8 +360,20 @@ textarea:focus-visible {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.contact-directory {
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.contacts-layout {
+  width: 100%;
+  grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
+  align-items: stretch;
+}
+
 .card,
 .mini-card,
+.contact-directory article,
 .scheme-zone,
 .form-card,
 .visual-card,
@@ -408,12 +385,41 @@ textarea:focus-visible {
 }
 
 .card,
-.mini-card {
+.mini-card,
+.contact-directory article {
   min-width: 0;
   display: grid;
   align-content: start;
   gap: 8px;
   padding: 13px;
+}
+
+.contact-directory span {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 760;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.contact-directory strong {
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.section-shell--contacts .section-header h1 {
+  font-size: 34px;
+}
+
+.section-shell--contacts .section-header p {
+  font-size: 15px;
+}
+
+.section-shell--contacts .contact-directory article {
+  gap: 6px;
+  padding: 11px 12px;
 }
 
 .card h2,
@@ -432,8 +438,8 @@ textarea:focus-visible {
 }
 
 .card--accent {
-  border-color: rgba(216, 145, 34, 0.58);
-  background: #fff7e6;
+  border-color: rgba(107, 146, 110, 0.58);
+  background: rgba(107, 146, 110, 0.12);
 }
 
 .filter-row,
@@ -485,7 +491,7 @@ textarea:focus-visible {
 }
 
 .timeline-step span {
-  color: var(--amber);
+  color: var(--green);
   font-size: 12px;
   font-weight: 800;
 }
@@ -505,20 +511,23 @@ textarea:focus-visible {
 }
 
 .form-card {
-  max-width: 760px;
-  padding: 14px;
+  width: 100%;
+  max-width: none;
+  display: grid;
+  padding: 12px;
 }
 
 .request-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-rows: auto auto auto minmax(54px, 1fr) auto;
+  gap: 8px;
 }
 
 .field,
 .field--full {
   display: grid;
-  gap: 5px;
+  gap: 4px;
 }
 
 .field--full {
@@ -540,12 +549,20 @@ textarea:focus-visible {
   border-radius: var(--radius);
   background: #fff;
   color: var(--ink);
-  padding: 8px 10px;
+  padding: 7px 9px;
 }
 
 .field textarea {
-  min-height: 70px;
+  min-height: 54px;
   resize: vertical;
+}
+
+.field--comment {
+  min-height: 0;
+}
+
+.field--comment textarea {
+  height: 100%;
 }
 
 .field fieldset,
@@ -557,21 +574,50 @@ fieldset.field {
 
 .contact-tags {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
+  gap: 6px;
 }
 
 .contact-tags label {
-  min-height: 32px;
-  display: flex;
+  position: relative;
+  min-height: 30px;
+  display: grid;
   align-items: center;
-  gap: 7px;
-  padding: 6px 8px;
+  justify-items: center;
+  padding: 5px 28px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--paper);
   color: var(--ink);
   font-size: 12px;
   font-weight: 650;
+  text-align: center;
+}
+
+.contact-tags input {
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  appearance: none;
+  border: 1px solid #8f9388;
+  border-radius: 3px;
+  background: #fff;
+  transform: translateY(-50%);
+}
+
+.contact-tags input:checked {
+  border-color: var(--green);
+  background: linear-gradient(var(--green), var(--green)) center / 8px 8px no-repeat #fff;
+}
+
+.contact-tags span {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: center;
 }
 
 .form-footer {
@@ -678,39 +724,32 @@ fieldset.field {
 
 .status-bar {
   min-height: 40px;
-  display: grid;
-  grid-template-columns: auto auto auto minmax(0, 1fr);
+  position: relative;
+  display: flex;
   align-items: center;
-  gap: 18px;
+  justify-content: center;
   padding: 9px 18px;
   border-top: 1px solid var(--line);
-  background: rgba(240, 239, 230, 0.84);
+  background: rgba(107, 146, 110, 0.08);
   color: var(--muted);
   font-size: 12px;
 }
 
-.status-current {
-  min-width: 0;
-  justify-self: end;
-  color: var(--ink);
-}
-
-.status-current strong {
-  color: var(--green-dark);
+.status-copy {
+  text-align: center;
 }
 
 @media (max-width: 1180px) {
-  .brand-caption,
-  .contact-placeholder {
+  .contact-phone {
     display: none;
   }
 
   .top-bar {
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, auto) auto;
   }
 
   .app-main {
-    grid-template-columns: 190px minmax(0, 1fr) 310px;
+    grid-template-columns: 190px minmax(0, 1fr);
   }
 
   .section-header h1 {
@@ -751,14 +790,8 @@ fieldset.field {
     width: 168px;
   }
 
-  .top-nav {
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding-bottom: 3px;
-  }
-
-  .top-nav__item {
-    flex: 0 0 auto;
+  .brand-sublogo {
+    height: 22px;
   }
 
   .top-actions {
@@ -789,6 +822,18 @@ fieldset.field {
     align-content: start;
   }
 
+  .contacts-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .request-form {
+    grid-template-rows: none;
+  }
+
+  .field--comment textarea {
+    height: auto;
+  }
+
   .section-header h1 {
     font-size: 30px;
   }
@@ -797,17 +842,10 @@ fieldset.field {
     font-size: 16px;
   }
 
-  .context-panel {
-    overflow: visible;
-  }
-
   .status-bar {
-    grid-template-columns: 1fr 1fr;
+    justify-content: center;
   }
 
-  .status-current {
-    justify-self: start;
-  }
 }
 
 @media (max-width: 640px) {
@@ -821,7 +859,6 @@ fieldset.field {
 
   .top-bar,
   .content-panel,
-  .context-panel,
   .rail-meta {
     padding: 14px;
   }
@@ -830,11 +867,17 @@ fieldset.field {
     width: 150px;
   }
 
+  .brand-sublogo {
+    height: 18px;
+  }
+
   .module-grid,
   .product-grid,
   .yantari-grid,
   .service-grid,
   .company-grid,
+  .contacts-layout,
+  .contact-directory,
   .request-form,
   .contact-tags,
   .timeline {
@@ -850,7 +893,6 @@ fieldset.field {
   }
 
   .status-bar {
-    grid-template-columns: 1fr;
-    gap: 6px;
+    min-height: 38px;
   }
 }
