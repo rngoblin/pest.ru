@@ -138,7 +138,7 @@ textarea:focus-visible {
 .crop-button:hover,
 .crop-button.is-active {
   border-color: var(--green);
-  background: #e9efe7;
+  background: rgba(107, 146, 110, 0.14);
   color: var(--green-dark);
 }
 
@@ -381,7 +381,7 @@ textarea:focus-visible {
 .brand-diagram {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(251, 250, 246, 0.86);
+  background: rgba(247, 247, 247, 0.92);
 }
 
 .card,
@@ -636,7 +636,7 @@ fieldset.field {
 
 .visual-card {
   overflow: hidden;
-  background: #f7f5ed;
+  background: var(--paper-2);
 }
 
 .visual-card img {
@@ -709,7 +709,7 @@ fieldset.field {
 
 .brand-node--amber {
   border-color: var(--amber);
-  background: #fff7e6;
+  background: rgba(107, 146, 110, 0.12);
 }
 
 .brand-node strong {
