@@ -225,6 +225,19 @@
   const railIndex = document.querySelector("[data-rail-index]");
   const railTitle = document.querySelector("[data-rail-title]");
   const railText = document.querySelector("[data-rail-text]");
+  const leftRail = document.querySelector(".left-rail");
+  const menuToggle = document.querySelector("[data-menu-toggle]");
+  const mobileMedia = window.matchMedia("(max-width: 960px)");
+
+  function setMobileMenu(isOpen) {
+    if (!leftRail || !menuToggle) return;
+    leftRail.classList.toggle("is-open", isOpen);
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  }
+
+  function closeMobileMenu() {
+    setMobileMenu(false);
+  }
 
   function renderHome() {
     return `
@@ -504,10 +517,20 @@
   }
 
   document.addEventListener("click", (event) => {
+    const menuTrigger = event.target.closest("[data-menu-toggle]");
+    if (menuTrigger) {
+      event.preventDefault();
+      setMobileMenu(!leftRail.classList.contains("is-open"));
+      return;
+    }
+
     const sectionTrigger = event.target.closest("[data-section-link]");
     if (sectionTrigger) {
       event.preventDefault();
       renderSection(sectionTrigger.dataset.section || "home");
+      if (mobileMedia.matches) {
+        closeMobileMenu();
+      }
       return;
     }
 
@@ -562,7 +585,23 @@
       const previous = sections[(state.activeIndex - 1 + sections.length) % sections.length];
       renderSection(previous.id);
     }
+
+    if (event.key === "Escape") {
+      closeMobileMenu();
+    }
   });
+
+  const handleMobileChange = (event) => {
+    if (!event.matches) {
+      closeMobileMenu();
+    }
+  };
+
+  if (mobileMedia.addEventListener) {
+    mobileMedia.addEventListener("change", handleMobileChange);
+  } else {
+    mobileMedia.addListener(handleMobileChange);
+  }
 
   window.addEventListener("hashchange", () => {
     renderSection(readHash(), { updateHash: false });
